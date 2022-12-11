@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import { Handle, useReactFlow, useStoreApi } from 'reactflow';
+import { ChangeEvent, memo } from 'react';
+import { Handle, Position, useReactFlow, useStoreApi } from 'reactflow';
 
 const options = [
   {
@@ -20,11 +20,11 @@ const options = [
   },
 ];
 
-function Select({ value, handleId, nodeId }) {
+function Select({ value, handleId, nodeId }: { value: string, handleId: string, nodeId: string }) {
   const { setNodes } = useReactFlow();
   const store = useStoreApi();
 
-  const onChange = (evt) => {
+  const onChange = (evt: ChangeEvent<HTMLSelectElement>) => {
     const { nodeInternals } = store.getState();
     setNodes(
       Array.from(nodeInternals.values()).map((node) => {
@@ -53,12 +53,12 @@ function Select({ value, handleId, nodeId }) {
           </option>
         ))}
       </select>
-      <Handle type="source" position="right" id={handleId} />
+      <Handle type="source" position={Position.Right} id={handleId} />
     </div>
   );
 }
 
-function CustomNode({ id, data }) {
+function CustomNode({ id, data }: { id: string, data: any }) {
   return (
     <>
       <div className="custom-node__header">

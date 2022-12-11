@@ -26,7 +26,7 @@ export const nodes = [
     },
     {
       id: '4',
-      // type: 'custom',
+      type: 'custom',
       position: { x: 100, y: 200 },
       data: {
         selects: {
